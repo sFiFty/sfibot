@@ -1,15 +1,15 @@
 {
-  "name": "sfibot-backend",
+  "name": "sfibot-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for sfibot twitch-bot",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": "https://github.com/sFiFty/sfibot/tree/main/backend",
+  "author": "sFiFty",
+  "license": "MIT",
+  "private": false,
   "dependencies": {
+    "express": "^4.17.1",
+    "firebase-admin": "^9.5.0",
     "tmi.js": "^1.7.5"
   }
 }
