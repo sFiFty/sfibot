@@ -3,7 +3,7 @@ const { getAll } = require('../firestoreApi/commands');
 
 const BOT_USERNAME = 'sfibot';
 const CHANNEL_NAME = 'sfiftyk';
-const OAUTH_TOKEN = 'oauth:qerwdex5g8sfbva95t9m2tho94xlst';
+const OAUTH_TOKEN = 'oauth:rokmfpuofxdsz76ubrblhpl89k5fad';
 
 const opts = {
   identity: {
@@ -30,10 +30,9 @@ const onMessageHandler = async (target, context, msg, self) => {
 
   commands.forEach(command => {
     if (msg === command.name) {
-        client.say(target, command.response);
+      client.say(target, command.response);
     }
   })
-
 
   console.log('target', target);
   console.log('context', context);
