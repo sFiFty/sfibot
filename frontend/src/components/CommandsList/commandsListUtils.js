@@ -1,25 +1,27 @@
 import { Space, Button } from 'antd';
+import localesConstanst from 'locales/localesConstanst';
 
+const { commands: tCommands } = localesConstanst;
 
 export const generateColumns = (translate, setCommandToEdit) => {
   return [
     {
-      title: translate('commandsList.columnCommandName'),
+      title: translate(tCommands.columnCommandName.path),
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: translate('commandsList.columnResponseName'),
+      title: translate(tCommands.columnResponseName.path),
       dataIndex: 'response',
       key: 'response',
     },
     {
-      title: 'Action',
+      title: '',
       key: 'action',
       render: (text, record, test) => {
         return (
           <Space size="middle">
-            <Button onClick={() => setCommandToEdit(record.key)}>Edit</Button>
+            <Button onClick={() => setCommandToEdit(record.key)}>{translate(tCommands.columnActionEdit.path)}</Button>
           </Space>
         )
       },

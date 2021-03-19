@@ -1,40 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button, Space } from 'antd';
 import { useTranslation } from "react-i18next";
-import { Formik, Field, Form } from 'formik';
+import localesConstanst from 'locales/localesConstanst';
+import { Field } from 'formik';
+import Form, { SInput } from 'components/Form';
 
 const AddCommandForm = ({
-  command = null, onAddCommand, onUpdateCommand
+  command = null, onAddCommand, onUpdateCommand, isUpdate
 }) => {
-  const isUpdate = !!command;
   const initialValues = {
     name: command ? command.name : '',
     response: command ? command.response : ''
   }
 
   const { t } = useTranslation();
-
+  const { commands: tCommands } = localesConstanst;
   const onSubmit = (values) => {
     if (isUpdate) {
-      onUpdateCommand(values);
-      return;
+      return onUpdateCommand(values);
     }
-    onAddCommand(values);
+    return onAddCommand(values);
   }
 
   return (
-    <Formik
+    <Form
       initialValues={initialValues}
       onSubmit={onSubmit}
     >
-      <Form>
-        <label htmlFor="name">{t('commandsList.formCommandName')}</label>
-        <Field id="name" name="name" placeholder={t('commandsList.formCommandName')} />
-        <label htmlFor="response">{t('commandsList.formCommandResponse')}</label>
-        <Field id="response" name="response" placeholder={t('commandsList.formCommandResponse')} />
-        <button type="submit">{command ? t('commandsList.formCommandUpdate') : t('commandsList.formCommandAdd')}</button>
-      </Form>
-    </Formik>
+      <Field
+        component={SInput}
+        name="name"
+        placeholder={t(tCommands.formCommandName.path)}
+        label={t(tCommands.formCommandName.path)}
+      />
+      <Field
+        component={SInput} 
+        name="response"
+        placeholder={t(tCommands.formCommandResponse.path)}
+        label={t(tCommands.formCommandResponse.path)}
+      />
+      <Button type="primary" htmlType="submit">{command ? t(tCommands.formCommandUpdate.path) : t(tCommands.formCommandAdd.path)}</Button>
+    </Form>
   )
 }
 
@@ -46,6 +53,7 @@ AddCommandForm.propTypes = {
   }),
   onAddCommand: PropTypes.func.isRequired,
   onUpdateCommand: PropTypes.func.isRequired,
+  isUpdate: PropTypes.bool.isRequired
 }
 
 export default AddCommandForm;

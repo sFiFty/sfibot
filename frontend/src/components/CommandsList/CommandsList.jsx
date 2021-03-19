@@ -9,9 +9,7 @@ const CommandsList = ({ commands, setCommandToEdit }) => {
   const columns = generateColumns(t, setCommandToEdit);
   const tableData = generateCommandsTableData(commands);
   return (
-    <div>
-      <Table dataSource={tableData} columns={columns} />;
-    </div>
+    <Table dataSource={tableData} columns={columns} />
   )
 }
 

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
+import localesConstanst from 'locales/localesConstanst';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Layout as AntLayout, Spin  } from 'antd';
+import { Layout as AntLayout, Spin, Drawer, Button, Space, Card, Divider } from 'antd';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Navigation from 'components/Navigation';
@@ -15,12 +17,21 @@ const StyledLayout = styled(AntLayout)`
 `;
 
 const Layout = () => {
+  const { t } = useTranslation();
+  const { commands: tCommands } = localesConstanst;
   const [commands, setCommands] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commandToEdit, setCommandToEdit] = useState(null);
+  const [isCommandDrawerOpen, setIsCommandDrawerOpen] = useState(false);
 
+  const openAddCommandForm = () => {
+    setCommandToEdit(null);
+    setIsCommandDrawerOpen(true);
+  }
+  
   const onSetCommandToEdit = (commandId) => {
     setCommandToEdit(commands.find(c => c.id === commandId));
+    setIsCommandDrawerOpen(true);
   }
 
   useEffect(() => {
@@ -32,15 +43,20 @@ const Layout = () => {
     getData();
   }, []);
 
-  console.log(commandToEdit)
+  const isDrawerForUpdate = !!commandToEdit;
 
   const onAddCommand = async (data) => {
-    await axios.post('http://localhost:3001/commands/', data)
+    return axios.post('http://localhost:3001/commands/', data)
   }
 
   const onUpdateCommand = async (data) => {
     console.log(data)
     // Update here || TODO
+  }
+
+  const onDrawerClose = () => {
+    setCommandToEdit(null);
+    setIsCommandDrawerOpen(false);
   }
 
   return (
@@ -49,16 +65,36 @@ const Layout = () => {
       <AntLayout>
         <Navigation />
         <Content>
-          {
-            loading ? (
-              <Spin />
-            ) : (
-              <>
-                <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} />
-                <CommandForm key={commandToEdit ? commandToEdit.id : undefined} command={commandToEdit} onAddCommand={onAddCommand} onUpdateCommand={onUpdateCommand} />
-              </>
-            )
-          }
+          <Card>
+            {
+              loading ? (
+                <Spin />
+              ) : (
+                <Space direction="vertical" size="middle">
+                  <Button onClick={openAddCommandForm}>{t(tCommands.addNewCommandButton.path)}</Button>
+                  <Divider />
+                  <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} />
+                  {
+                    isCommandDrawerOpen && (
+                      <Drawer
+                        title={isDrawerForUpdate ? t(tCommands.drawerUpdateCommandTitle.path) : t(tCommands.drawerCreateCommandTitle.path)}
+                        placement="right"
+                        visible
+                        onClose={onDrawerClose}
+                      >
+                        <CommandForm
+                          command={commandToEdit}
+                          onAddCommand={onAddCommand}
+                          onUpdateCommand={onUpdateCommand}
+                          isUpdate={isDrawerForUpdate}
+                        />
+                      </Drawer>
+                    )
+                  }
+                </Space>
+              )
+            }
+          </Card>
         </Content>
       </AntLayout>
       <Footer/>

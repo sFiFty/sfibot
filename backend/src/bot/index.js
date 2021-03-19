@@ -1,17 +1,13 @@
 const tmi = require('tmi.js');
 const { getAll } = require('../firestoreApi/commands');
 
-const BOT_USERNAME = 'sfibot';
-const CHANNEL_NAME = 'sfiftyk';
-const OAUTH_TOKEN = 'oauth:rokmfpuofxdsz76ubrblhpl89k5fad';
-
 const opts = {
   identity: {
-    username: BOT_USERNAME,
-    password: OAUTH_TOKEN
+    username: process.env.TWITCH_BOT_USERNAME,
+    password: process.env.TWITCH_CHANNEL_NAME
   },
   channels: [
-    CHANNEL_NAME
+    process.env.TWITCH_TOKEN
   ]
 };
 
