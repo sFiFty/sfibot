@@ -14,5 +14,11 @@ export default {
     [commands.drawerUpdateCommandTitle.name]: "Update command",
     [commands.drawerCreateCommandTitle.name]: "Create new command",
     [commands.addNewCommandButton.name]: "Add new command",
+    [commands.formCommandNameValidationRequiredError.name]: "Command name is required field",
+    [commands.formCommandNameValidationMaxLengthError.name]: "Command name should contain less then 20 characters",
+    [commands.formCommandNameValidationMinLengthError.name]: "Command name should contain more then 2 characters",
+    [commands.formCommandResponseValidationRequiredError.name]: "Response is required field",
+    [commands.formCommandResponseValidationMaxLengthError.name]: "Response should contain less then 100 characters",
+    [commands.formCommandResponseValidationMinLengthError.name]: "Response should contain more then 2 characters",
   }
 }

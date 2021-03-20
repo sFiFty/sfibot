@@ -34,6 +34,8 @@ const Layout = () => {
     setIsCommandDrawerOpen(true);
   }
 
+
+
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get('http://localhost:3001/commands/');
@@ -45,18 +47,25 @@ const Layout = () => {
 
   const isDrawerForUpdate = !!commandToEdit;
 
-  const onAddCommand = async (data) => {
-    return axios.post('http://localhost:3001/commands/', data)
-  }
-
-  const onUpdateCommand = async (data) => {
-    console.log(data)
-    // Update here || TODO
-  }
-
   const onDrawerClose = () => {
     setCommandToEdit(null);
     setIsCommandDrawerOpen(false);
+  }
+
+  const onUpdateCommands = async () => {
+    setLoading(true);
+    const response = await axios.get('http://localhost:3001/commands/');
+    setCommands(response.data);
+    setLoading(false);
+    onDrawerClose();
+  }
+  
+  const onAddCommand = async (data) => {
+    return axios.post('http://localhost:3001/commands/', data).then(() => onUpdateCommands());
+  }
+
+  const onUpdateCommand = async (data) => {
+    return axios.patch('http://localhost:3001/commands/', data).then(() => onUpdateCommands());
   }
 
   return (
@@ -77,6 +86,7 @@ const Layout = () => {
                   {
                     isCommandDrawerOpen && (
                       <Drawer
+                        width="50%"
                         title={isDrawerForUpdate ? t(tCommands.drawerUpdateCommandTitle.path) : t(tCommands.drawerCreateCommandTitle.path)}
                         placement="right"
                         visible

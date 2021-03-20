@@ -7,7 +7,6 @@ const SForm = ({
   children, onSubmit, ...rest
 }) => {
   const onCustomSubmit = (values, form) => {
-    console.log(form)
     onSubmit(values).then(() => {
     }).catch(error => {
       const errors = error.response.data.details;
@@ -18,19 +17,24 @@ const SForm = ({
   return (
     <Formik
       {...rest}
+      validateOnChange={false}
       onSubmit={onCustomSubmit}
     >
-      <Form>
-        <Space direction="vertical" size="middle">
-          {children}
-        </Space>
-      </Form>
+      {
+        (form) => (
+          <Form>
+            <Space direction="vertical" size="middle">
+              {children(form)}
+            </Space>
+          </Form>
+        )
+      }
     </Formik>
   )
 }
 
 SForm.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.func.isRequired
 }
 
 export default SForm;

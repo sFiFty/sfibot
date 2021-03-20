@@ -18,4 +18,13 @@ const addNew = async (command) => {
   }
 }
 
-module.exports = { getAll, addNew };
+const updateOne = async (command) => {
+  const id = command.id;
+  const firestoreResponse = commandsRef.doc(id).update(command);
+  return {
+    data: command,
+    firestoreResponse
+  }
+}
+
+module.exports = { getAll, addNew, updateOne };

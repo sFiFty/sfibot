@@ -1,9 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Input, Alert, Space } from 'antd';
 import { FormElementContainer } from '../StyledForm';
 
-const SInput = ({ form, field, label }) => {
+const { TextArea } = Input;
+
+const StyledTextArea = styled(TextArea)`
+  resize: none;
+`;
+
+const STextArea = ({ form, field, label }) => {
   const onChange = (event) => form.setFieldValue(field.name, event.target.value);
   return (
     <FormElementContainer>
@@ -13,7 +20,7 @@ const SInput = ({ form, field, label }) => {
         )
       }
       <Space direction="vertical">
-        <Input {...field} onChange={onChange} id={label && field.name} />
+        <StyledTextArea {...field} onChange={onChange} id={label && field.name} />
         {
           form.errors[field.name] && (
             <Alert message={form.errors[field.name]} type="error" />
@@ -24,7 +31,7 @@ const SInput = ({ form, field, label }) => {
   )
 }
 
-SInput.propTypes = {
+STextArea.propTypes = {
   form: PropTypes.shape({
     setFieldValue: PropTypes.func.isRequired
   }),
@@ -34,4 +41,4 @@ SInput.propTypes = {
   label: PropTypes.string
 }
 
-export default SInput;
+export default STextArea;

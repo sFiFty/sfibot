@@ -14,5 +14,11 @@ export default {
     [commands.drawerUpdateCommandTitle.name]: "Обновить команду",
     [commands.drawerCreateCommandTitle.name]: "Добавить новую команду",
     [commands.addNewCommandButton.name]: "Добавить новую команду",
+    [commands.formCommandNameValidationRequiredError.name]: "Название команды является обязательным полем",
+    [commands.formCommandNameValidationMaxLengthError.name]: "Название команды должно содержать менее 20ти символов",
+    [commands.formCommandNameValidationMinLengthError.name]: "Название команды должно содержать больше 2х символов",
+    [commands.formCommandResponseValidationRequiredError.name]: "Ответ является обязательным полем",
+    [commands.formCommandResponseValidationMaxLengthError.name]: "Поле ответ должно содержать менее 100та символов",
+    [commands.formCommandResponseValidationMinLengthError.name]: "Поле ответ должно содержать больше 2х символов",
   }
 }

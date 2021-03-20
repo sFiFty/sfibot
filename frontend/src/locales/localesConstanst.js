@@ -44,6 +44,30 @@ export default {
     addNewCommandButton: {
       path: "commands.addNewCommandButton",
       name: "addNewCommandButton"
+    },
+    formCommandNameValidationRequiredError: {
+      path: "commands.formCommandNameValidationRequiredError",
+      name: "formCommandNameValidationRequiredError"
+    },
+    formCommandNameValidationMaxLengthError: {
+      path: "commands.formCommandNameValidationMaxLengthError",
+      name: "formCommandNameValidationMaxLengthError"
+    },
+    formCommandNameValidationMinLengthError: {
+      path: "commands.formCommandNameValidationMinLengthError",
+      name: "formCommandNameValidationMinLengthError"
+    },
+    formCommandResponseValidationRequiredError: {
+      path: "commands.formCommandResponseValidationRequiredError",
+      name: "formCommandResponseValidationRequiredError"
+    },
+    formCommandResponseValidationMaxLengthError: {
+      path: "commands.formCommandResponseValidationMaxLengthError",
+      name: "formCommandResponseValidationMaxLengthError"
+    },
+    formCommandResponseValidationMinLengthError: {
+      path: "commands.formCommandResponseValidationMinLengthError",
+      name: "formCommandResponseValidationMinLengthError"
     }
   }
 }

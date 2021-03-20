@@ -1,13 +1,14 @@
 const tmi = require('tmi.js');
+require('dotenv').config();
 const { getAll } = require('../firestoreApi/commands');
 
 const opts = {
   identity: {
     username: process.env.TWITCH_BOT_USERNAME,
-    password: process.env.TWITCH_CHANNEL_NAME
+    password: process.env.TWITCH_TOKEN
   },
   channels: [
-    process.env.TWITCH_TOKEN
+    process.env.TWITCH_CHANNEL_NAME
   ]
 };
 
@@ -38,5 +39,6 @@ const onMessageHandler = async (target, context, msg, self) => {
 
 client.on('connected', onConnectedHandler);
 client.on('message', onMessageHandler);
+client.connect();
 
-module.exports = { client };
+
