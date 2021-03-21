@@ -20,7 +20,6 @@ const twitch = axios.create({
 
 twitch.interceptors.request.use(function (config) {
   twitch_token = localStorage.getItem('twitch_token');
-  console.log(twitch_token)
   config.headers.Authorization = `Bearer ${twitch_token}`;
   return config;
 }, function (error) {

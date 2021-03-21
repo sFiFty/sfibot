@@ -1,8 +1,7 @@
 import React from 'react';
-import { Select } from 'antd';
-import { Layout } from 'antd';
+import i18n from "i18next";
+import { Select, Layout } from 'antd';
 import styled from 'styled-components';
-import { changeLanguage } from 'locales';
 const { Header: AntHeader } = Layout;
 
 const { Option } = Select;
@@ -14,9 +13,7 @@ const StyledHeader = styled(AntHeader)`
 `;
 
 const Header = () => {
-  const handleChange = (value) => {
-    changeLanguage(value)
-  }
+  const handleChange = (value) => i18n.changeLanguage(value);
   return (
     <StyledHeader>
       <Select defaultValue="EN" style={{ width: 120 }} onChange={handleChange}>

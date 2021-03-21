@@ -6,7 +6,7 @@ const translation = {
   [commands.columnActionEdit]: "Редактировать",
   [commands.columnActionDelete]: "Удалить",
   [commands.formName]: "Команда",
-  [commands.formResponseame]: "Ответ",
+  [commands.formResponse]: "Ответ",
   [commands.formAdd]: "Добавить команду",
   [commands.formUpdate]: "Обновить команду",
   [commands.drawerUpdateTitle]: "Обновить команду",
