@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Space } from 'antd';
-import { useTranslation } from "react-i18next";
+import { Button } from 'antd';
+import { useTranslation, nameSpaces, commands as tCommands } from "locales";
 import * as Yup from 'yup';
-import localesConstanst from 'locales/localesConstanst';
 import { Field } from 'formik';
 import Form, { SInput, STextArea } from 'components/Form';
 
@@ -12,7 +11,7 @@ import Form, { SInput, STextArea } from 'components/Form';
 const AddCommandForm = ({
   command = null, onAddCommand, onUpdateCommand, isUpdate
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(nameSpaces.commands);
 
   const initialValues = {
     name: command ? command.name : '',
@@ -21,16 +20,15 @@ const AddCommandForm = ({
 
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t(localesConstanst.commands.formCommandNameValidationMinLengthError.path))
-      .max(20, t(localesConstanst.commands.formCommandNameValidationMaxLengthError.path))
-      .required(t(localesConstanst.commands.formCommandNameValidationRequiredError.path)),
+      .min(2, t(tCommands.formNameValidationMinLengthError))
+      .max(20, t(tCommands.formNameValidationMaxLengthError))
+      .required(t(tCommands.formNameValidationRequiredError)),
     response: Yup.string()
-      .min(2, t(localesConstanst.commands.formCommandResponseValidationMinLengthError.path))
-      .max(100, t(localesConstanst.commands.formCommandResponseValidationMaxLengthError.path))
-      .required(t(localesConstanst.commands.formCommandResponseValidationRequiredError.path)),
+      .min(2, t(tCommands.formResponseValidationMinLengthError))
+      .max(100, t(tCommands.formResponseValidationMaxLengthError))
+      .required(t(tCommands.formResponseValidationRequiredError)),
   });
 
-  const { commands: tCommands } = localesConstanst;
   const onSubmit = (values) => {
     if (isUpdate) {
       return onUpdateCommand({
@@ -54,20 +52,21 @@ const AddCommandForm = ({
               <Field
                 component={SInput}
                 name="name"
-                placeholder={t(tCommands.formCommandName.path)}
-                label={t(tCommands.formCommandName.path)}
+                placeholder={t(tCommands.formName)}
+                label={t(tCommands.formName)}
               />
               <Field
                 component={STextArea} 
                 name="response"
-                placeholder={t(tCommands.formCommandResponse.path)}
-                label={t(tCommands.formCommandResponse.path)}
+                placeholder={t(tCommands.formResponse)}
+                label={t(tCommands.formResponse)}
               />
               <Button
+                loading={form.isSubmitting}
                 type="primary"
                 htmlType="submit"
               >
-                {command ? t(tCommands.formCommandUpdate.path) : t(tCommands.formCommandAdd.path)}
+                {command ? t(tCommands.formUpdate) : t(tCommands.formAdd)}
               </Button>
             </>
           )

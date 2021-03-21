@@ -24,7 +24,6 @@ const onMessageHandler = async (target, context, msg, self) => {
   }
 
   const commands = await getAll();
-
   commands.forEach(command => {
     if (msg === command.name) {
       client.say(target, command.response);

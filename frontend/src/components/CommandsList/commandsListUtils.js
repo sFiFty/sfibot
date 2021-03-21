@@ -1,17 +1,15 @@
 import { Space, Button } from 'antd';
-import localesConstanst from 'locales/localesConstanst';
+import { commands } from 'locales';
 
-const { commands: tCommands } = localesConstanst;
-
-export const generateColumns = (translate, setCommandToEdit) => {
+export const generateColumns = (translate, setCommandToEdit, onDeleteCommand) => {
   return [
     {
-      title: translate(tCommands.columnCommandName.path),
+      title: translate(commands.columnName),
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: translate(tCommands.columnResponseName.path),
+      title: translate(commands.columnName),
       dataIndex: 'response',
       key: 'response',
     },
@@ -21,7 +19,8 @@ export const generateColumns = (translate, setCommandToEdit) => {
       render: (text, record, test) => {
         return (
           <Space size="middle">
-            <Button onClick={() => setCommandToEdit(record.key)}>{translate(tCommands.columnActionEdit.path)}</Button>
+            <Button onClick={() => setCommandToEdit(record.key)}>{translate(commands.columnActionEdit)}</Button>
+            <Button danger onClick={() => onDeleteCommand(record.key)}>{translate(commands.columnActionDelete)}</Button>
           </Space>
         )
       },

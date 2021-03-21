@@ -1,16 +1,17 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../sfibot-4d84b-firebase-adminsdk-nk8wk-db52a0961c.json');
+require('dotenv').config();
+const serviceAccount = require('../firebase_sert.json');
 
 const firebaseConfig = {
     credential: admin.credential.cert(serviceAccount),
-    apiKey: "AIzaSyCuoHdkbGAPaRPndj_q17JE4ayf134714I",
-    authDomain: "sfibot-4d84b.firebaseapp.com",
-    databaseURL: "https://sfibot-4d84b-default-rtdb.firebaseio.com",
-    projectId: "sfibot-4d84b",
-    storageBucket: "sfibot-4d84b.appspot.com",
-    messagingSenderId: "749841746078",
-    appId: "1:749841746078:web:6583b7449c39634d6a538f",
-    measurementId: "G-1YFF0HVF24"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_API,
+    appId: process.env.APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
   };
 
 admin.initializeApp(firebaseConfig);

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from "react-i18next";
+import { useTranslation, nameSpaces } from 'locales'
 import { Table } from 'antd';
 import { generateColumns, generateCommandsTableData } from './commandsListUtils';
 
-const CommandsList = ({ commands, setCommandToEdit }) => {
-  const { t } = useTranslation();
-  const columns = generateColumns(t, setCommandToEdit);
+const CommandsList = ({ commands, setCommandToEdit, onDeleteCommand }) => {
+  const { t } = useTranslation(nameSpaces.commands);
+  const columns = generateColumns(t, setCommandToEdit, onDeleteCommand);
   const tableData = generateCommandsTableData(commands);
   return (
     <Table dataSource={tableData} columns={columns} />
@@ -19,7 +19,8 @@ CommandsList.propTypes = {
     name: PropTypes.string.isRequired,
     response: PropTypes.string.isRequired
   })),
-  setCommandToEdit: PropTypes.func.isRequired
+  setCommandToEdit: PropTypes.func.isRequired,
+  onDeleteCommand: PropTypes.func.isRequired,
 }
 
 export default CommandsList;

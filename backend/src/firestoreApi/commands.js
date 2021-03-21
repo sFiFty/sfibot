@@ -11,7 +11,7 @@ const getAll = async () => {
 
 const addNew = async (command) => {
   const id = uuidv4();
-  const firestoreResponse = commandsRef.doc(id).set(command);
+  const firestoreResponse = await commandsRef.doc(id).set(command);
   return {
     data: command,
     firestoreResponse
@@ -20,11 +20,13 @@ const addNew = async (command) => {
 
 const updateOne = async (command) => {
   const id = command.id;
-  const firestoreResponse = commandsRef.doc(id).update(command);
+  const firestoreResponse = await commandsRef.doc(id).update(command);
   return {
     data: command,
     firestoreResponse
   }
 }
 
-module.exports = { getAll, addNew, updateOne };
+const deleteOne = (id) => commandsRef.doc(id).delete();
+
+module.exports = { getAll, addNew, updateOne, deleteOne };

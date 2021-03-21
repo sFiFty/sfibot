@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from 'antd';
 import { Layout } from 'antd';
 import styled from 'styled-components';
-import translate from 'utils/translate';
+import { changeLanguage } from 'locales';
 const { Header: AntHeader } = Layout;
 
 const { Option } = Select;
@@ -15,7 +15,7 @@ const StyledHeader = styled(AntHeader)`
 
 const Header = () => {
   const handleChange = (value) => {
-    translate.changeLanguage(value)
+    changeLanguage(value)
   }
   return (
     <StyledHeader>

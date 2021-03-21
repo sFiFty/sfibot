@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from "react-i18next";
-import localesConstanst from 'locales/localesConstanst';
-import axios from 'axios';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Layout as AntLayout, Spin, Drawer, Button, Space, Card, Divider } from 'antd';
+import { useTranslation, nameSpaces, commands as tCommands } from "locales";
+import { useCommands, changeCommand, addCommand, removeCommand } from 'hooks/useCommand';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Navigation from 'components/Navigation';
@@ -17,10 +16,8 @@ const StyledLayout = styled(AntLayout)`
 `;
 
 const Layout = () => {
-  const { t } = useTranslation();
-  const { commands: tCommands } = localesConstanst;
-  const [commands, setCommands] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { t } = useTranslation(nameSpaces.commands);
+  const { isLoading, data: commands, refetch } = useCommands();
   const [commandToEdit, setCommandToEdit] = useState(null);
   const [isCommandDrawerOpen, setIsCommandDrawerOpen] = useState(false);
 
@@ -34,17 +31,6 @@ const Layout = () => {
     setIsCommandDrawerOpen(true);
   }
 
-
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get('http://localhost:3001/commands/');
-      setCommands(response.data);
-      setLoading(false);
-    }
-    getData();
-  }, []);
-
   const isDrawerForUpdate = !!commandToEdit;
 
   const onDrawerClose = () => {
@@ -53,19 +39,24 @@ const Layout = () => {
   }
 
   const onUpdateCommands = async () => {
-    setLoading(true);
-    const response = await axios.get('http://localhost:3001/commands/');
-    setCommands(response.data);
-    setLoading(false);
+    await refetch();
     onDrawerClose();
   }
   
   const onAddCommand = async (data) => {
-    return axios.post('http://localhost:3001/commands/', data).then(() => onUpdateCommands());
+    await addCommand(data);
+    await onUpdateCommands();
   }
 
   const onUpdateCommand = async (data) => {
-    return axios.patch('http://localhost:3001/commands/', data).then(() => onUpdateCommands());
+    await changeCommand(data);
+    await onUpdateCommands();
+  }
+
+  const onDeleteCommand = async (id) => {
+    console.log(id)
+    await removeCommand(id);
+    await refetch();
   }
 
   return (
@@ -76,18 +67,18 @@ const Layout = () => {
         <Content>
           <Card>
             {
-              loading ? (
+              isLoading ? (
                 <Spin />
               ) : (
                 <Space direction="vertical" size="middle">
-                  <Button onClick={openAddCommandForm}>{t(tCommands.addNewCommandButton.path)}</Button>
+                  <Button onClick={openAddCommandForm}>{t(tCommands.addNewButton)}</Button>
                   <Divider />
-                  <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} />
+                  <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} onDeleteCommand={onDeleteCommand} />
                   {
                     isCommandDrawerOpen && (
                       <Drawer
                         width="50%"
-                        title={isDrawerForUpdate ? t(tCommands.drawerUpdateCommandTitle.path) : t(tCommands.drawerCreateCommandTitle.path)}
+                        title={isDrawerForUpdate ? t(tCommands.drawerUpdateTitle) : t(tCommands.drawerCreateTitle)}
                         placement="right"
                         visible
                         onClose={onDrawerClose}

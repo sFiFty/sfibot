@@ -9,8 +9,10 @@ const SForm = ({
   const onCustomSubmit = (values, form) => {
     onSubmit(values).then(() => {
     }).catch(error => {
-      const errors = error.response.data.details;
-      form.setErrors(errors);
+      const errors = error.response && error.response.data && error.response.data.details;
+      if (errors) {
+        form.setErrors(errors);
+      }
     })
   }
 
@@ -21,13 +23,16 @@ const SForm = ({
       onSubmit={onCustomSubmit}
     >
       {
-        (form) => (
-          <Form>
-            <Space direction="vertical" size="middle">
-              {children(form)}
-            </Space>
-          </Form>
-        )
+        (form) => {
+          console.log(form)
+          return (
+            <Form>
+              <Space direction="vertical" size="middle">
+                {children(form)}
+              </Space>
+            </Form>
+          )
+        }
       }
     </Formik>
   )
