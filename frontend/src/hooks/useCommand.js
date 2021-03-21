@@ -1,4 +1,4 @@
-import { useQuery, queryCache } from 'react-query';
+import { useQuery } from 'react-query';
 import {
   getCommands,
   editCommand,
@@ -6,7 +6,7 @@ import {
   deleteCommand
 } from './api/commandsApi';
 
-export const useCommands = () => useQuery('commands', getCommands);
+export const useCommands = () => useQuery('commands', getCommands, { retry: false });
 
 export const changeCommand = (data) => editCommand(data);
 

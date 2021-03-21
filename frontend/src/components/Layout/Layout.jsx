@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
-import { Layout as AntLayout, Spin, Drawer, Button, Space, Card, Divider } from 'antd';
-import { useTranslation, nameSpaces, commands as tCommands } from "locales";
-import { useCommands, changeCommand, addCommand, removeCommand } from 'hooks/useCommand';
+import { Layout as AntLayout, Spin } from 'antd';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Navigation from 'components/Navigation';
-import CommandsList from 'components/CommandsList';
-import CommandForm from 'components/CommandForm';
+import Login from 'pages/Login';
+import Landing from 'pages/Landing';
+import { useUser } from 'hooks/useUser';
+import Routes from './Routes';
 
 const { Content } = AntLayout;
 
@@ -16,90 +17,32 @@ const StyledLayout = styled(AntLayout)`
 `;
 
 const Layout = () => {
-  const { t } = useTranslation(nameSpaces.commands);
-  const { isLoading, data: commands, refetch } = useCommands();
-  const [commandToEdit, setCommandToEdit] = useState(null);
-  const [isCommandDrawerOpen, setIsCommandDrawerOpen] = useState(false);
+  const { data, isLoading, isError, refetch, ...rest } = useUser();
 
-  const openAddCommandForm = () => {
-    setCommandToEdit(null);
-    setIsCommandDrawerOpen(true);
-  }
-  
-  const onSetCommandToEdit = (commandId) => {
-    setCommandToEdit(commands.find(c => c.id === commandId));
-    setIsCommandDrawerOpen(true);
-  }
-
-  const isDrawerForUpdate = !!commandToEdit;
-
-  const onDrawerClose = () => {
-    setCommandToEdit(null);
-    setIsCommandDrawerOpen(false);
-  }
-
-  const onUpdateCommands = async () => {
-    await refetch();
-    onDrawerClose();
-  }
-  
-  const onAddCommand = async (data) => {
-    await addCommand(data);
-    await onUpdateCommands();
-  }
-
-  const onUpdateCommand = async (data) => {
-    await changeCommand(data);
-    await onUpdateCommands();
-  }
-
-  const onDeleteCommand = async (id) => {
-    console.log(id)
-    await removeCommand(id);
-    await refetch();
+  const renderContent = (isUserLoading, isUserError) => {
+    if (isUserLoading) {
+      return <Spin />
+    }
+    if (isUserError) {
+      return <Landing />
+    }
+    return <Routes />
   }
 
   return (
-    <StyledLayout>
-      <Header />
-      <AntLayout>
-        <Navigation />
-        <Content>
-          <Card>
-            {
-              isLoading ? (
-                <Spin />
-              ) : (
-                <Space direction="vertical" size="middle">
-                  <Button onClick={openAddCommandForm}>{t(tCommands.addNewButton)}</Button>
-                  <Divider />
-                  <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} onDeleteCommand={onDeleteCommand} />
-                  {
-                    isCommandDrawerOpen && (
-                      <Drawer
-                        width="50%"
-                        title={isDrawerForUpdate ? t(tCommands.drawerUpdateTitle) : t(tCommands.drawerCreateTitle)}
-                        placement="right"
-                        visible
-                        onClose={onDrawerClose}
-                      >
-                        <CommandForm
-                          command={commandToEdit}
-                          onAddCommand={onAddCommand}
-                          onUpdateCommand={onUpdateCommand}
-                          isUpdate={isDrawerForUpdate}
-                        />
-                      </Drawer>
-                    )
-                  }
-                </Space>
-              )
-            }
-          </Card>
-        </Content>
-      </AntLayout>
-      <Footer/>
-    </StyledLayout>
+    <Router>
+      <StyledLayout>
+        <Header />
+        <AntLayout>
+          <Navigation />
+          <Content>
+            {renderContent(isLoading, isError)}
+            <Route exact path="/twitch-auth" component={Login} />
+          </Content>
+        </AntLayout>
+        <Footer/>
+      </StyledLayout>
+    </Router>
   )
 };
 
