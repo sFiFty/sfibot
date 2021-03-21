@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 import { Layout as AntLayout, Spin } from 'antd';
@@ -17,7 +17,7 @@ const StyledLayout = styled(AntLayout)`
 `;
 
 const Layout = () => {
-  const { data, isLoading, isError, refetch, ...rest } = useUser();
+  const { isLoading, isError } = useUser();
 
   const renderContent = (isUserLoading, isUserError) => {
     if (isUserLoading) {
@@ -40,7 +40,7 @@ const Layout = () => {
             <Route exact path="/twitch-auth" component={Login} />
           </Content>
         </AntLayout>
-        <Footer/>
+        <Footer />
       </StyledLayout>
     </Router>
   )

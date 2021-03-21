@@ -1,6 +1,6 @@
 import { commands } from '../constanst';
 
-export default {
+const translation = {
   [commands.columnName]: "Command name",
   [commands.columnResponseName]: "Response",
   [commands.columnActionEdit]: "Edit",
@@ -19,3 +19,5 @@ export default {
   [commands.formResponseValidationMaxLengthError]: "Response should contain less then 100 characters",
   [commands.formResponseValidationMinLengthError]: "Response should contain more then 2 characters",
 }
+
+export default translation;

@@ -18,7 +18,7 @@ const onConnectedHandler = (addr, port) => {
 }
 
 const onMessageHandler = async (target, context, msg, self) => {
-  
+
   if (context['display-name'] === 'sfibot') {
     return;
   }

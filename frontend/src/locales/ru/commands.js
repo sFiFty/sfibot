@@ -1,6 +1,6 @@
 import { commands } from '../constanst';
 
-export default {
+const translation = {
   [commands.columnCommandName]: "Имя команды",
   [commands.columnResponseName]: "Ответ",
   [commands.columnActionEdit]: "Редактировать",
@@ -19,3 +19,5 @@ export default {
   [commands.formResponseValidationMaxLengthError]: "Поле ответ должно содержать менее 100та символов",
   [commands.formResponseValidationMinLengthError]: "Поле ответ должно содержать больше 2х символов",
 }
+
+export default translation;

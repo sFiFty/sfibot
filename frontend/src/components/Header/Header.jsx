@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 import styled from 'styled-components';
 import { changeLanguage } from 'locales';
 const { Header: AntHeader } = Layout;
