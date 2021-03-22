@@ -4,7 +4,8 @@
  */
 
 export const nameSpaces = {
-  commands: 'commands'
+  commands: 'commands',
+  common: 'common'
 }
 
 export const commands = {
@@ -25,4 +26,11 @@ export const commands = {
   formResponseValidationRequiredError: 'formResponseValidationRequiredError',
   formResponseValidationMaxLengthError: 'formResponseValidationMaxLengthError',
   formResponseValidationMinLengthError: 'formResponseValidationMinLengthError',
+}
+
+export const common = {
+  commands: 'commands',
+  chat: 'chat',
+  slogan: 'slogan',
+  footerMadeBy: 'footerMadeBy'
 }

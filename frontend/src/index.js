@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { QueryClient, QueryClientProvider } from 'react-query'
-import 'antd/dist/antd.css';
+import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import 'styles/antd.css';
+import theme from 'styles/theme';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'locales';
@@ -11,7 +13,9 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

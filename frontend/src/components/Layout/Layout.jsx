@@ -12,8 +12,16 @@ import Routes from './Routes';
 
 const { Content } = AntLayout;
 
-const StyledLayout = styled(AntLayout)`
+const StyledMainLayout = styled(AntLayout)`
   height: 100%;
+`;
+
+const ContentContainer = styled(AntLayout)`
+  flex-direction: row;
+`;
+
+const StyledContent = styled(Content)`
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const Layout = () => {
@@ -31,17 +39,17 @@ const Layout = () => {
 
   return (
     <Router>
-      <StyledLayout>
+      <StyledMainLayout>
         <Header />
-        <AntLayout>
+        <ContentContainer>
           <Navigation />
-          <Content>
+          <StyledContent>
             {renderContent(isLoading, isError)}
             <Route exact path="/twitch-auth" component={Login} />
-          </Content>
-        </AntLayout>
+          </StyledContent>
+        </ContentContainer>
         <Footer />
-      </StyledLayout>
+      </StyledMainLayout>
     </Router>
   )
 };
