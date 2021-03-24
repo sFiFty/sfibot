@@ -10,7 +10,7 @@ export const nameSpaces = {
 
 export const commands = {
   columnName: 'columnName',
-  columnResponseName: 'columnResponseName',
+  columnResponse: 'columnResponse',
   columnActionEdit: 'columnActionEdit',
   columnActionDelete: 'columnActionDelete',
   formName: 'formName',
@@ -31,6 +31,7 @@ export const commands = {
 export const common = {
   commands: 'commands',
   chat: 'chat',
+  dashboard: 'dashboard',
   slogan: 'slogan',
   footerMadeBy: 'footerMadeBy'
 }

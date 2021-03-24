@@ -1,50 +1,36 @@
-import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { Menu, Button } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { Link, withRouter } from 'react-router-dom';
+import { Menu } from 'antd';
 import { useTranslation, nameSpaces } from "locales";
 import generateNavigationData from './navigationUtils';
 
-const NavigationContainer = styled.aside`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  padding: 0px 20px;
+const StyledMenu = styled(Menu)`
+  background-color: ${({ theme }) => theme.colors.mainBgColor};
+  &.ant-menu {
+    line-height: 40px;
+  }
 `;
 
 const Navigation = ({ location }) => {
   const { t } = useTranslation(nameSpaces.common);
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const navigationData = generateNavigationData(t);
   return (
-    <NavigationContainer>
-      <Button type="primary" onClick={() => setIsCollapsed(!isCollapsed)}>
-        {
-          isCollapsed ? (
-            <FontAwesomeIcon icon={faChevronRight} />
-          ) : (
-            <FontAwesomeIcon icon={faChevronLeft} />
-          )
-        }
-      </Button>
-      <Menu
-        defaultSelectedKeys={[location.pathname]}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        theme="dark"
-        inlineCollapsed={isCollapsed}
-      >
-        {
-          navigationData.map(navigationItem => (
-            <Menu.Item key={navigationItem.route} icon={navigationItem.icon}>
-              <Link to={navigationItem.route}>
-                {navigationItem.name}
-              </Link>
-            </Menu.Item>
-          ))
-        }
-      </Menu>
-    </NavigationContainer>
+    <StyledMenu
+      defaultSelectedKeys={[location.pathname]}
+      defaultOpenKeys={['sub1']}
+      mode="horizontal"
+    >
+      {
+        navigationData.map(navigationItem => (
+          <Menu.Item key={navigationItem.route}>
+            <Link to={navigationItem.route}>
+              {navigationItem.name}
+            </Link>
+          </Menu.Item>
+        ))
+      }
+    </StyledMenu>
   )
 };
 

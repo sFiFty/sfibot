@@ -9,7 +9,7 @@ export const generateColumns = (translate, setCommandToEdit, onDeleteCommand) =>
       key: 'name',
     },
     {
-      title: translate(commands.columnName),
+      title: translate(commands.columnResponse),
       dataIndex: 'response',
       key: 'response',
     },

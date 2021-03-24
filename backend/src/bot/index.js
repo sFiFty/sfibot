@@ -1,6 +1,7 @@
 const tmi = require('tmi.js');
 require('dotenv').config();
 const { getAll } = require('../firestoreApi/commands');
+const { isExist, incrementVisitorMessageCount, addNew } = require('../firestoreApi/visitors');
 
 const opts = {
   identity: {
@@ -29,6 +30,19 @@ const onMessageHandler = async (target, context, msg, self) => {
       client.say(target, command.response);
     }
   })
+
+  const isVisitorExistis = await isExist(context['user-id'])
+
+  if (isVisitorExistis) {
+    incrementVisitorMessageCount(context['user-id']);
+  } else {
+    addNew({
+      id: context['user-id'],
+      displayName: context['display-name'],
+      username: context.username,
+      messagesCount: 1
+    })
+  }
 
   console.log('target', target);
   console.log('context', context);

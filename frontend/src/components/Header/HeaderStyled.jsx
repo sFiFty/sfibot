@@ -9,12 +9,11 @@ export const StyledHeader = styled(AntHeader)`
   align-items: center;
   padding: 20px 30px;
   height: auto;
+  background-color: ${({ theme }) => theme.colors.mainBgColor};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
 export const LogoContainer = styled.div`
-  h1, h3 {
-    color: ${({ theme }) => theme.colors.white};
-  }
   h1 {
     letter-spacing: 8px;
     font-size: 24px;
@@ -22,6 +21,7 @@ export const LogoContainer = styled.div`
     margin-bottom: 0px;
   }
   h3 {
-    line-height: 34px;
+    line-height: 18px;
+    font-size: ${({ theme }) => theme.fontSizes.small};;
   }
 `;

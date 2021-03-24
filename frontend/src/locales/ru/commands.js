@@ -1,8 +1,8 @@
 import { commands } from '../constanst';
 
 const translation = {
-  [commands.columnCommandName]: "Имя команды",
-  [commands.columnResponseName]: "Ответ",
+  [commands.columnName]: "Имя команды",
+  [commands.columnResponse]: "Ответ",
   [commands.columnActionEdit]: "Редактировать",
   [commands.columnActionDelete]: "Удалить",
   [commands.formName]: "Команда",

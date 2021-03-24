@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 import { Layout as AntLayout, Spin } from 'antd';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
-import Navigation from 'components/Navigation';
 import Login from 'pages/Login';
 import Landing from 'pages/Landing';
 import { useUser } from 'hooks/useUser';
@@ -16,12 +14,8 @@ const StyledMainLayout = styled(AntLayout)`
   height: 100%;
 `;
 
-const ContentContainer = styled(AntLayout)`
-  flex-direction: row;
-`;
-
 const StyledContent = styled(Content)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.mainBgColor};
 `;
 
 const Layout = () => {
@@ -41,14 +35,10 @@ const Layout = () => {
     <Router>
       <StyledMainLayout>
         <Header />
-        <ContentContainer>
-          <Navigation />
-          <StyledContent>
-            {renderContent(isLoading, isError)}
-            <Route exact path="/twitch-auth" component={Login} />
-          </StyledContent>
-        </ContentContainer>
-        <Footer />
+        <StyledContent>
+          {renderContent(isLoading, isError)}
+          <Route exact path="/twitch-auth" component={Login} />
+        </StyledContent>
       </StyledMainLayout>
     </Router>
   )

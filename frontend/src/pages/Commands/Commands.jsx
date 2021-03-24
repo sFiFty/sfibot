@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Spin, Drawer, Button, Space, Card, Divider } from 'antd';
+import styled from 'styled-components';
+import { Spin, Drawer, Button, Space, Divider } from 'antd';
 import { useTranslation, nameSpaces, commands as tCommands } from "locales";
 import { useCommands, changeCommand, addCommand, removeCommand } from 'hooks/useCommand';
 import CommandsList from 'components/CommandsList';
 import CommandForm from 'components/CommandForm';
+import { PageWrapper } from 'styles/StyledWrappers';
+
+const StyledAddButton = styled(Button)`
+  float: right;
+`;
 
 const Commands = () => {
   const { t } = useTranslation(nameSpaces.commands);
@@ -49,13 +55,13 @@ const Commands = () => {
   }
 
   return (
-    <Card>
+    <PageWrapper>
       {
         isLoading ? (
           <Spin />
         ) : (
           <Space direction="vertical" size="middle">
-            <Button onClick={openAddCommandForm}>{t(tCommands.addNewButton)}</Button>
+            <StyledAddButton onClick={openAddCommandForm}>{t(tCommands.addNewButton)}</StyledAddButton>
             <Divider />
             <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} onDeleteCommand={onDeleteCommand} />
             {
@@ -79,7 +85,7 @@ const Commands = () => {
           </Space>
         )
       }
-    </Card>
+    </PageWrapper>
   )
 };
 
