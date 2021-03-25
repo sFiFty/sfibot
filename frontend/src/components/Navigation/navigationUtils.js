@@ -7,8 +7,8 @@ const generateNavigationData = (translate) => {
       route: '/'
     },
     {
-      name: translate(tCommon.chat),
-      route: '/chat'
+      name: translate(tCommon.viewers),
+      route: '/viewers'
     },
     {
       name: translate(tCommon.dashboard),

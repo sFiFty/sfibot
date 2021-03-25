@@ -1,5 +1,4 @@
 const { db, admin } = require('../utils/admin');
-const { v4: uuidv4 } = require('uuid');
 const visitorsRef = db.collection("visitors");
 
 const getAll = async () => {
@@ -25,11 +24,8 @@ const incrementVisitorMessageCount = async (visitorId) => {
   const increment = admin.firestore.FieldValue.increment(1);
   const firestoreResponse = await visitorsRef.doc(visitorId).update({ messagesCount: increment });
   return {
-    data: command,
     firestoreResponse
   }
 }
-
-const deleteOne = (id) => visitorsRef.doc(id).delete();
 
 module.exports = { isExist, incrementVisitorMessageCount, addNew };

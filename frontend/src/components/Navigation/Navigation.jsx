@@ -9,6 +9,9 @@ const StyledMenu = styled(Menu)`
   background-color: ${({ theme }) => theme.colors.mainBgColor};
   &.ant-menu {
     line-height: 40px;
+    .ant-menu-item a {
+      font-size: ${({ theme }) => theme.fontSizes.large};
+    }
   }
 `;
 

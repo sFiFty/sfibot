@@ -5,7 +5,8 @@
 
 export const nameSpaces = {
   commands: 'commands',
-  common: 'common'
+  common: 'common',
+  visitors: 'visitors',
 }
 
 export const commands = {
@@ -31,7 +32,15 @@ export const commands = {
 export const common = {
   commands: 'commands',
   chat: 'chat',
+  viewers: 'viewers',
   dashboard: 'dashboard',
   slogan: 'slogan',
-  footerMadeBy: 'footerMadeBy'
+  footerMadeBy: 'footerMadeBy',
+}
+
+export const visitors = {
+  pageHead: 'pageHead',
+  tabFollowers: 'tabFollowers',
+  tabTopChatters: 'tabTopChatters',
+  tabSubscribers: 'tabSubscribers',
 }

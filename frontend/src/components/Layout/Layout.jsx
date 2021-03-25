@@ -12,6 +12,7 @@ const { Content } = AntLayout;
 
 const StyledMainLayout = styled(AntLayout)`
   height: 100%;
+  background-color: ${({ theme }) => theme.colors.mainBgColor};
 `;
 
 const StyledContent = styled(Content)`

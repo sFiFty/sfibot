@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import Commands from 'pages/Commands';
-import Chat from 'pages/Chat';
+import Viewers from 'pages/Viewers';
 import Dashboard from 'pages/Dashboard';
 
 const Routes = () => {
@@ -10,8 +10,8 @@ const Routes = () => {
       <Route exact path="/">
         <Commands />
       </Route>
-      <Route exact path="/chat">
-        <Chat />
+      <Route exact path="/Viewers">
+        <Viewers />
       </Route>
       <Route exact path="/dashboard">
         <Dashboard />
