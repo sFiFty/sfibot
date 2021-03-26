@@ -7,6 +7,7 @@ export const nameSpaces = {
   commands: 'commands',
   common: 'common',
   visitors: 'visitors',
+  date: 'date'
 }
 
 export const commands = {
@@ -40,7 +41,16 @@ export const common = {
 
 export const visitors = {
   pageHead: 'pageHead',
-  tabFollowers: 'tabFollowers',
+  tabNewestFollowers: 'tabNewestFollowers',
   tabTopChatters: 'tabTopChatters',
-  tabSubscribers: 'tabSubscribers',
+  tabNewestSubscribers: 'tabNewestSubscribers',
+  userName: 'userName',
+  followDate: 'followDate',
+}
+
+export const date = {
+  today: 'today',
+  yesterday: 'yesterday',
+  tomorrow: 'tomorrow',
+  at: 'at',
 }

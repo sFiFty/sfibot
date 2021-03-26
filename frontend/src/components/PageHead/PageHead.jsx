@@ -9,17 +9,20 @@ const { Button: RadioButton } = Radio;
 
 const PageHead = ({ pageName, tabs = [], onTabChange, addButtonTitle, addAction }) => {
 
-  const hadleTabChange = (event) => onTabChange(event.target.value);
+  const hadleTabChange = (event) => {
+    const tab = tabs.find(t => t.id === event.target.value);
+    onTabChange(tab);
+  };
 
   return (
     <PageHeadContainer>
       <h2>{pageName}</h2>
       {
         tabs.length > 0 && (
-          <StyledRadioGroup defaultValue={tabs[0]} size="large" onChange={hadleTabChange}>
+          <StyledRadioGroup defaultValue={tabs[0].id} size="large" onChange={hadleTabChange}>
             {
               tabs.map(tab => (
-                <RadioButton key={tab} value={tab}>{tab}</RadioButton>
+                <RadioButton key={tab.id} value={tab.id}>{tab.name}</RadioButton>
               ))
             }
           </StyledRadioGroup>
@@ -40,7 +43,10 @@ const PageHead = ({ pageName, tabs = [], onTabChange, addButtonTitle, addAction 
 
 PageHead.propTypes = {
   pageName: PropTypes.string.isRequired,
-  tabs: PropTypes.arrayOf(PropTypes.string),
+  tabs: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })),
   onTabChange: PropTypes.func,
   addButtonTitle: PropTypes.string,
   addAction: PropTypes.func,

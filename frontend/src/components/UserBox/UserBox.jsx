@@ -25,14 +25,13 @@ const menu = (
 );
 
 const UserBox = () => {
-  const { data: userData, isLoading } = useUser();
+  const { data: user, isLoading } = useUser();
   if (isLoading) {
     return <Spin />
   }
-  if (!userData) {
+  if (!user) {
     return null;
   }
-  const user = userData.data[0];
   return (
     <Dropdown overlay={menu} trigger="click">
       <StyledAvatar src={user.profileImageUrl} />

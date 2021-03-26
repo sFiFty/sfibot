@@ -14,6 +14,7 @@ const StyledAddButton = styled(Button)`
 const Commands = () => {
   const { t } = useTranslation(nameSpaces.commands);
   const { isLoading, data: commands, refetch } = useCommands();
+
   const [commandToEdit, setCommandToEdit] = useState(null);
   const [isCommandDrawerOpen, setIsCommandDrawerOpen] = useState(false);
 

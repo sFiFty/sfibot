@@ -2,9 +2,11 @@ import { visitors } from '../constanst';
 
 const translation = {
   [visitors.pageHead]: "Visitors",
-  [visitors.tabFollowers]: "Followers",
+  [visitors.tabNewestFollowers]: "Newest followers",
   [visitors.tabTopChatters]: "Top Chatters",
-  [visitors.tabSubscribers]: "Subscribers",
+  [visitors.tabNewestSubscribers]: "Newest subscribers",
+  [visitors.userName]: "User name",
+  [visitors.followDate]: "Follow date"
 }
 
 export default translation;

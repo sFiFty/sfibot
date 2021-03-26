@@ -1,4 +1,4 @@
-import { main as axios } from 'utils/instances';
+import { main as axios } from 'utils/axiosInstances';
 
 export const getCommands = async () => {
   const response = await axios.get(`/commands/`);

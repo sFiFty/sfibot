@@ -13,6 +13,7 @@
     "antd": "^4.13.1",
     "axios": "^0.21.1",
     "axios-case-converter": "^0.7.0",
+    "date-fns": "^2.19.0",
     "formik": "^2.2.6",
     "i18next": "^19.9.2",
     "prop-types": "^15.7.2",
