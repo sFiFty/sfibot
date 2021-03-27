@@ -1,6 +1,8 @@
 const { getAll, addNew, updateOne, deleteOne } = require('../firestoreApi/commands');
 const { validate, Joi } = require('express-validation');
 
+const ROUTE = '/commands'
+
 module.exports = function(app) {
   const createCommandValidation = {
     body: Joi.object({
@@ -23,12 +25,12 @@ module.exports = function(app) {
     }),
   }
   
-  app.get('/commands', async (req, res) => {
+  app.get(ROUTE, async (req, res) => {
     const commands = await getAll();
     res.send(commands);
   });
   
-  app.post('/commands', validate(createCommandValidation, { keyByField: true }, { abortEarly: false }), async (req, res) => {
+  app.post(ROUTE, validate(createCommandValidation, { keyByField: true }, { abortEarly: false }), async (req, res) => {
     const { name } = req.body;
     const commands = await getAll();
   
@@ -41,12 +43,12 @@ module.exports = function(app) {
     res.send(command);
   });
 
-  app.patch('/commands', validate(updateCommandValidation, { keyByField: true }, { abortEarly: false }), async (req, res) => {
+  app.patch(ROUTE, validate(updateCommandValidation, { keyByField: true }, { abortEarly: false }), async (req, res) => {
     const command = await updateOne(req.body);
     res.send(command);
   });
 
-  app.delete('/commands/:id', async (req, res) => {
+  app.delete(`${ROUTE}/:id`, async (req, res) => {
     const { id } = req.params;
     const command = await deleteOne(id);
     res.send(command);

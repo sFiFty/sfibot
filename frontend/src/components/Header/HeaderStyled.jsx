@@ -5,14 +5,18 @@ import { containerStyles } from 'styles/StyledWrappers';
 const { Header: AntHeader } = Layout;
 
 export const StyledHeader = styled(AntHeader)`
+  background-color: ${({ theme }) => theme.colors.mainBgColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
+  height: 100px;
+`;
+
+export const HeaderContainer = styled.div`
   ${containerStyles};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px;
   height: auto;
-  background-color: ${({ theme }) => theme.colors.mainBgColor};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
 export const LogoContainer = styled.div`

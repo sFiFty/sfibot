@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Radio } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const { Group } = Radio;
 
@@ -7,7 +8,8 @@ export const PageHeadContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0px 30px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
 `;
 
 export const StyledRadioGroup = styled(Group)`
@@ -20,3 +22,14 @@ export const StyledRadioGroup = styled(Group)`
     border-bottom-right-radius: 25px;
   }
 `;
+
+export const AddButtonIcon = styled(FontAwesomeIcon)`
+  margin-right: 10px;
+`;
+
+export const PageNameContainer = styled.h2`
+  .icon {
+    margin-right: 20px;
+  }
+`;
+

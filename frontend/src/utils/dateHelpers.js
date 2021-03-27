@@ -5,7 +5,6 @@ export const DATE_FORMAT = 'dd.MM.yyyy';
 export const TIME_FORMAT = 'HH:mm';
 
 export const transformDayView = (date, translate) => {
-  console.log(translate)
   const parsedDate = new Date(date);
   if (isToday(parsedDate)) {
     return translate(tDate.today);

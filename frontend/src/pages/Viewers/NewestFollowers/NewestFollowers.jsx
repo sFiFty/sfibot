@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin, Table } from 'antd';
 import { useTranslation, nameSpaces } from "locales";
-import { useFollowers } from 'hooks/useFollowers';
+import { useFollowers } from 'hooks/useVisitors';
 import { useUser } from 'hooks/useUser';
 import { generateColumns, generateTableData } from './newestFollowersUtils';
 
@@ -23,19 +23,9 @@ const NewestFollowers = () => {
   }
 
   const columns = generateColumns(t, tDate);
-  const tableData = generateTableData(followers.data)
+  const tableData = generateTableData(followers.data);
 
-  return (
-    <div>
-      {
-        isLoading ? (
-          <Spin />
-        ) : (
-          <Table dataSource={tableData} columns={columns} />
-        )
-      }
-    </div>
-  )
+  return <Table dataSource={tableData} columns={columns} />;
 }
 
 export default NewestFollowers;

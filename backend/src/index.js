@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 require('./api/commands')(app);
+require('./api/visitors')(app);
+require('./api/inputs')(app);
 
 const port = 3001;
 

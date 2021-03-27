@@ -7,7 +7,8 @@ export const nameSpaces = {
   commands: 'commands',
   common: 'common',
   visitors: 'visitors',
-  date: 'date'
+  date: 'date',
+  inputs: 'inputs',
 }
 
 export const commands = {
@@ -28,6 +29,30 @@ export const commands = {
   formResponseValidationRequiredError: 'formResponseValidationRequiredError',
   formResponseValidationMaxLengthError: 'formResponseValidationMaxLengthError',
   formResponseValidationMinLengthError: 'formResponseValidationMinLengthError',
+  pageHead: 'pageHead',
+  regularCommands: 'regularCommands',
+  timers: 'timers',
+  inputs: 'inputs',
+}
+
+export const inputs = {
+  columnName: 'columnName',
+  columnInputName: 'columnInputName',
+  columnActionEdit: 'columnActionEdit',
+  columnActionDelete: 'columnActionDelete',
+  formName: 'formName',
+  formInputName: 'formInputName',
+  formAdd: 'formAdd',
+  formUpdate: 'formUpdate',
+  drawerUpdateTitle: 'drawerUpdateTitle',
+  drawerCreateTitle: 'drawerCreateTitle',
+  addNewButton: 'addNewButton',
+  formNameValidationRequiredError: 'formNameValidationRequiredError',
+  formNameValidationMaxLengthError: 'formNameValidationMaxLengthError',
+  formNameValidationMinLengthError: 'formNameValidationMinLengthError',
+  formInputNameValidationRequiredError: 'formInputNameValidationRequiredError',
+  formInputNameValidationMaxLengthError: 'formInputNameValidationMaxLengthError',
+  formInputNameValidationMinLengthError: 'formInputNameValidationMinLengthError',
 }
 
 export const common = {
@@ -46,6 +71,7 @@ export const visitors = {
   tabNewestSubscribers: 'tabNewestSubscribers',
   userName: 'userName',
   followDate: 'followDate',
+  messagesCount: 'messagesCount',
 }
 
 export const date = {

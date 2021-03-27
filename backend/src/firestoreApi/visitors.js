@@ -28,4 +28,4 @@ const incrementVisitorMessageCount = async (visitorId) => {
   }
 }
 
-module.exports = { isExist, incrementVisitorMessageCount, addNew };
+module.exports = { isExist, incrementVisitorMessageCount, addNew, getAll };

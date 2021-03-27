@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation, nameSpaces, visitors as tVisitors } from "locales";
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import PageHead from 'components/PageHead';
 import { PageWrapper } from 'styles/StyledWrappers';
 import NewestFollowers from './NewestFollowers';
@@ -31,8 +32,6 @@ const Viewers = () => {
   ]
   
   const [activeTab, setActiveTab] = useState(tabs[0]);
-
-  const onViewModChange = (tab) => setActiveTab(tab);
   const onAddAction = () => {
 
   }
@@ -41,8 +40,9 @@ const Viewers = () => {
     <PageWrapper>
       <PageHead
         pageName={t(tVisitors.pageHead)}
+        icon={faUserFriends}
         tabs={tabs}
-        onTabChange={onViewModChange}
+        onTabChange={setActiveTab}
       />
       <div>
         {

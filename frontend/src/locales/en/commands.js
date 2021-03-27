@@ -18,6 +18,10 @@ const translation = {
   [commands.formResponseValidationRequiredError]: "Response is required field",
   [commands.formResponseValidationMaxLengthError]: "Response should contain less then 100 characters",
   [commands.formResponseValidationMinLengthError]: "Response should contain more then 2 characters",
+  [commands.pageHead]: "Commands",
+  [commands.regularCommands]: 'Regular',
+  [commands.timers]: 'Timers',
+  [commands.inputs]: 'Inputs',
 }
 
 export default translation;

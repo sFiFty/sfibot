@@ -23,16 +23,13 @@ const SForm = ({
       onSubmit={onCustomSubmit}
     >
       {
-        (form) => {
-          console.log(form)
-          return (
-            <Form>
-              <Space direction="vertical" size="middle">
-                {children(form)}
-              </Space>
-            </Form>
-          )
-        }
+        (form) => (
+          <Form>
+            <Space direction="vertical" size="middle">
+              {children(form)}
+            </Space>
+          </Form>
+        )
       }
     </Formik>
   )

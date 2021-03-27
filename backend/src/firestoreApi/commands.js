@@ -9,6 +9,7 @@ const getAll = async () => {
   return commands;
 }
 
+
 const addNew = async (command) => {
   const id = uuidv4();
   const firestoreResponse = await commandsRef.doc(id).set(command);

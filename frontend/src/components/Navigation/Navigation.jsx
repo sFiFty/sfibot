@@ -7,10 +7,17 @@ import generateNavigationData from './navigationUtils';
 
 const StyledMenu = styled(Menu)`
   background-color: ${({ theme }) => theme.colors.mainBgColor};
+  border-bottom: none;
   &.ant-menu {
     line-height: 40px;
-    .ant-menu-item a {
-      font-size: ${({ theme }) => theme.fontSizes.large};
+    .ant-menu-item {
+      border-bottom: none;
+      &:hover {
+        border-bottom: none;
+      }
+      a {
+        font-size: ${({ theme }) => theme.fontSizes.large};
+      }
     }
   }
 `;

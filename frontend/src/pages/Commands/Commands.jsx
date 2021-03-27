@@ -1,89 +1,61 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Spin, Drawer, Button, Space, Divider } from 'antd';
+import { Spin, Drawer, Card } from 'antd';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation, nameSpaces, commands as tCommands } from "locales";
-import { useCommands, changeCommand, addCommand, removeCommand } from 'hooks/useCommand';
-import CommandsList from 'components/CommandsList';
-import CommandForm from 'components/CommandForm';
+import PageHead from 'components/PageHead'
 import { PageWrapper } from 'styles/StyledWrappers';
+import RegularCommands from './RegularCommands';
+import Inputs from './Inputs';
 
-const StyledAddButton = styled(Button)`
-  float: right;
-`;
+const TAB_IDS = {
+  regularCommands: 'regularCommands',
+  timers: 'timers',
+  inputs: 'inputs',
+}
 
 const Commands = () => {
   const { t } = useTranslation(nameSpaces.commands);
-  const { isLoading, data: commands, refetch } = useCommands();
-
-  const [commandToEdit, setCommandToEdit] = useState(null);
-  const [isCommandDrawerOpen, setIsCommandDrawerOpen] = useState(false);
 
   const openAddCommandForm = () => {
-    setCommandToEdit(null);
-    setIsCommandDrawerOpen(true);
-  }
-  
-  const onSetCommandToEdit = (commandId) => {
-    setCommandToEdit(commands.find(c => c.id === commandId));
-    setIsCommandDrawerOpen(true);
+    // TODO
   }
 
-  const isDrawerForUpdate = !!commandToEdit;
+  const tabs = [
+    {
+      name: t(tCommands.regularCommands),
+      id: TAB_IDS.regularCommands
+    },
+    {
+      name: t(tCommands.timers),
+      id: TAB_IDS.timers
+    },
+    {
+      name: t(tCommands.inputs),
+      id: TAB_IDS.inputs
+    },
+  ]
 
-  const onDrawerClose = () => {
-    setCommandToEdit(null);
-    setIsCommandDrawerOpen(false);
-  }
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
-  const onUpdateCommands = async () => {
-    await refetch();
-    onDrawerClose();
-  }
-  
-  const onAddCommand = async (data) => {
-    await addCommand(data);
-    await onUpdateCommands();
-  }
-
-  const onUpdateCommand = async (data) => {
-    await changeCommand(data);
-    await onUpdateCommands();
-  }
-
-  const onDeleteCommand = async (id) => {
-    await removeCommand(id);
-    await refetch();
-  }
 
   return (
     <PageWrapper>
+      <PageHead
+        pageName={t(tCommands.pageHead)}
+        icon={faExclamationCircle}
+        tabs={tabs}
+        onTabChange={setActiveTab}
+        addAction={openAddCommandForm}
+        addButtonTitle={t(tCommands.addNewButton)}
+      />
       {
-        isLoading ? (
-          <Spin />
-        ) : (
-          <Space direction="vertical" size="middle">
-            <StyledAddButton onClick={openAddCommandForm}>{t(tCommands.addNewButton)}</StyledAddButton>
-            <Divider />
-            <CommandsList commands={commands} setCommandToEdit={onSetCommandToEdit} onDeleteCommand={onDeleteCommand} />
-            {
-              isCommandDrawerOpen && (
-                <Drawer
-                  width="50%"
-                  title={isDrawerForUpdate ? t(tCommands.drawerUpdateTitle) : t(tCommands.drawerCreateTitle)}
-                  placement="right"
-                  visible
-                  onClose={onDrawerClose}
-                >
-                  <CommandForm
-                    command={commandToEdit}
-                    onAddCommand={onAddCommand}
-                    onUpdateCommand={onUpdateCommand}
-                    isUpdate={isDrawerForUpdate}
-                  />
-                </Drawer>
-              )
-            }
-          </Space>
+        activeTab.id === TAB_IDS.regularCommands && (
+          <RegularCommands />
+        )
+      }
+      {
+        activeTab.id === TAB_IDS.inputs && (
+          <Inputs />
         )
       }
     </PageWrapper>

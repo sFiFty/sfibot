@@ -10,15 +10,17 @@ const Header = () => {
   const { t } = useTranslation(nameSpaces.common);
   return (
     <StyledHeader>
-      <LogoContainer>
-        <h1>SFIBOT</h1>
-        <h3>{t(tCommon.slogan)}</h3>
-      </LogoContainer>
-      <Navigation />
-      <Space direction="horizontal">
-        <LanguageSelector />
-        <UserBox />
-      </Space>
+      <HeaderContainer>
+        <LogoContainer>
+          <h1>SFIBOT</h1>
+          <h3>{t(tCommon.slogan)}</h3>
+        </LogoContainer>
+        <Navigation />
+        <Space direction="horizontal">
+          <LanguageSelector />
+          <UserBox />
+        </Space>
+      </HeaderContainer>
     </StyledHeader>
   )
 };

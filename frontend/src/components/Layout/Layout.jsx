@@ -11,7 +11,6 @@ import Routes from './Routes';
 const { Content } = AntLayout;
 
 const StyledMainLayout = styled(AntLayout)`
-  height: 100%;
   background-color: ${({ theme }) => theme.colors.mainBgColor};
 `;
 

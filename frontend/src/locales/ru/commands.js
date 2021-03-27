@@ -18,6 +18,10 @@ const translation = {
   [commands.formResponseValidationRequiredError]: "Ответ является обязательным полем",
   [commands.formResponseValidationMaxLengthError]: "Поле ответ должно содержать менее 100та символов",
   [commands.formResponseValidationMinLengthError]: "Поле ответ должно содержать больше 2х символов",
+  [commands.pageHead]: "Команды",
+  [commands.regularCommands]: 'Обычные',
+  [commands.timers]: 'Повторяющиеся',
+  [commands.inputs]: 'Команды ввода',
 }
 
 export default translation;

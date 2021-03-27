@@ -5,7 +5,7 @@ const theme = {
     secondary: '#001529',
     mainBgColor: '#f7f8fa',
     mainTextColor: '#4e5f81',
-    borderColor: '#d9d9d9;'
+    borderColor: '#d9d9d9'
   },
   fontSizes: {
     small: '12px',

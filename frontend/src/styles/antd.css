@@ -24986,7 +24986,7 @@ textarea.ant-mentions {
           font-feature-settings: 'tnum';
   position: relative;
   font-size: 14px;
-  background: #f7f8fa;
+  background: #ffffff;
   border-radius: 2px;
 }
 .ant-table table {
@@ -25030,9 +25030,8 @@ textarea.ant-mentions {
 }
 .ant-table-thead > tr > th {
   color: #4e5f81;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
-  background: #fafafa;
   border-bottom: 1px solid #f0f0f0;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;

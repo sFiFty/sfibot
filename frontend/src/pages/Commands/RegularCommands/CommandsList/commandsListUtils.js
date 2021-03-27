@@ -16,7 +16,7 @@ export const generateColumns = (translate, setCommandToEdit, onDeleteCommand) =>
     {
       title: '',
       key: 'action',
-      render: (text, record, test) => {
+      render: (text, record) => {
         return (
           <Space size="middle">
             <Button onClick={() => setCommandToEdit(record.key)}>{translate(commands.columnActionEdit)}</Button>
