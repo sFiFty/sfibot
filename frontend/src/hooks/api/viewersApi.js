@@ -8,6 +8,6 @@ export const getFollowers = async (userId) => {
 };
 
 export const getTopChatters = async () => {
-  const response = await axios.get(`/visitors`);
+  const response = await axios.get('/visitors');
   return response.data;
 };

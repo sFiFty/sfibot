@@ -9,7 +9,8 @@ export const nameSpaces = {
   visitors: 'visitors',
   date: 'date',
   inputs: 'inputs',
-}
+  requests: 'requests',
+};
 
 export const commands = {
   columnName: 'columnName',
@@ -22,7 +23,9 @@ export const commands = {
   formUpdate: 'formUpdate',
   drawerUpdateTitle: 'drawerUpdateTitle',
   drawerCreateTitle: 'drawerCreateTitle',
-  addNewButton: 'addNewButton',
+  addRegularButton: 'addRegularButton',
+  addTimerButton: 'addTimerButton',
+  addInputButton: 'addInputButton',
   formNameValidationRequiredError: 'formNameValidationRequiredError',
   formNameValidationMaxLengthError: 'formNameValidationMaxLengthError',
   formNameValidationMinLengthError: 'formNameValidationMinLengthError',
@@ -33,7 +36,7 @@ export const commands = {
   regularCommands: 'regularCommands',
   timers: 'timers',
   inputs: 'inputs',
-}
+};
 
 export const inputs = {
   columnName: 'columnName',
@@ -53,16 +56,17 @@ export const inputs = {
   formInputNameValidationRequiredError: 'formInputNameValidationRequiredError',
   formInputNameValidationMaxLengthError: 'formInputNameValidationMaxLengthError',
   formInputNameValidationMinLengthError: 'formInputNameValidationMinLengthError',
-}
+};
 
 export const common = {
   commands: 'commands',
   chat: 'chat',
   viewers: 'viewers',
   dashboard: 'dashboard',
+  requests: 'requests',
   slogan: 'slogan',
   footerMadeBy: 'footerMadeBy',
-}
+};
 
 export const visitors = {
   pageHead: 'pageHead',
@@ -72,11 +76,20 @@ export const visitors = {
   userName: 'userName',
   followDate: 'followDate',
   messagesCount: 'messagesCount',
-}
+};
 
 export const date = {
   today: 'today',
   yesterday: 'yesterday',
   tomorrow: 'tomorrow',
   at: 'at',
-}
+};
+
+export const requests = {
+  pageHead: 'pageHead',
+  username: 'username',
+  content: 'content',
+  type: 'type',
+  date: 'date',
+  isCompleted: 'isCompleted',
+};

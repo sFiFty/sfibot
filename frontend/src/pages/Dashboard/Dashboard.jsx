@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Dashboard = () => {
-  return (
-    <div>
-      Dashboard is under development
-    </div>
-  )
-}
+const Dashboard = () => (
+  <div>
+    Dashboard is under development
+  </div>
+);
 
 export default Dashboard;

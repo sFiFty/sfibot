@@ -1,7 +1,7 @@
-
 import { Layout } from 'antd';
 import styled from 'styled-components';
 import { containerStyles } from 'styles/StyledWrappers';
+
 const { Header: AntHeader } = Layout;
 
 export const StyledHeader = styled(AntHeader)`

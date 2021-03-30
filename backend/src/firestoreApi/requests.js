@@ -5,8 +5,15 @@ const requestsRef = db.collection("requests");
 const getAll = async () => {
   const dbRequests = await requestsRef.get();
   const requests = [];
-  dbRequests.forEach(request => requests.push({ ...request.data(), id: request.id }));
-  return inputs;
+  dbRequests.forEach(dbRequest => {
+    const request = dbRequest.data();
+    requests.push({
+      ...request,
+      id: dbRequest.id,
+      createdAt: request.createdAt.toDate()
+    })
+  });
+  return requests;
 }
 
 const addNew = async (request) => {

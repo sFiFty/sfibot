@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar, Spin, Dropdown, Menu } from 'antd';
-import { useUser } from 'hooks/useUser';
+import {
+  Avatar, Spin, Dropdown, Menu,
+} from 'antd';
+import useUser from 'hooks/useUser';
 
 const StyledAvatar = styled(Avatar)`
   cursor: pointer;
@@ -27,7 +29,7 @@ const menu = (
 const UserBox = () => {
   const { data: user, isLoading } = useUser();
   if (isLoading) {
-    return <Spin />
+    return <Spin />;
   }
   if (!user) {
     return null;
@@ -36,8 +38,7 @@ const UserBox = () => {
     <Dropdown overlay={menu} trigger="click">
       <StyledAvatar src={user.profileImageUrl} />
     </Dropdown>
-  )
+  );
 };
 
 export default UserBox;
-

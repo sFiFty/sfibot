@@ -32,4 +32,3 @@ export const PageNameContainer = styled.h2`
     margin-right: 20px;
   }
 `;
-

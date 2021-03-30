@@ -3,7 +3,7 @@ import {
   getInputs,
   editInput,
   createInput,
-  deleteInput
+  deleteInput,
 } from './api/inputsApi';
 
 export const useInputs = () => useQuery('inputs', getInputs, { retry: false });

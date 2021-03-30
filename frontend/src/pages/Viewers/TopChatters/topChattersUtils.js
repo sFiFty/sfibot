@@ -10,11 +10,11 @@ export const generateColumns = (translate) => [
     title: translate(visitors.messagesCount),
     dataIndex: 'messagesCount',
     key: 'messagesCount',
-  }
+  },
 ];
 
-export const generateTableData = (followersData) => followersData.map(follower => ({
+export const generateTableData = (followersData) => followersData.map((follower) => ({
   key: follower.fromId,
   name: follower.username,
-  messagesCount: follower.messagesCount
-}))
+  messagesCount: follower.messagesCount,
+}));

@@ -3,7 +3,7 @@ import {
   getCommands,
   editCommand,
   createCommand,
-  deleteCommand
+  deleteCommand,
 } from './api/commandsApi';
 
 export const useCommands = () => useQuery('commands', getCommands, { retry: false });

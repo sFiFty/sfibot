@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 import applyCaseMiddleware from 'axios-case-converter';
 
-let twitch_token = localStorage.getItem('twitch_token');
+let twitchToken = localStorage.getItem('twitch_token');
 
 const main = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -14,21 +14,23 @@ const twitch = applyCaseMiddleware(axios.create({
   headers: {
     get: {
       'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
-      'Authorization': `Bearer ${twitch_token}`
-    }
-  }
+      Authorization: `Bearer ${twitchToken}`,
+    },
+  },
 }));
 
-twitch.interceptors.request.use(function (config) {
-  twitch_token = localStorage.getItem('twitch_token');
-  config.headers.Authorization = `Bearer ${twitch_token}`;
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
+twitch.interceptors.request.use((config) => {
+  twitchToken = localStorage.getItem('twitch_token');
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: `Bearer ${twitchToken}`,
+    },
+  };
 });
 
 export {
   main,
-  twitch
+  twitch,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import i18n from "i18next";
+import i18n from 'i18next';
 import { Select } from 'antd';
 
 const { Option } = Select;
@@ -11,8 +11,7 @@ const LanguageSelector = () => {
       <Option value="en">EN</Option>
       <Option value="ru">RU</Option>
     </Select>
-  )
+  );
 };
 
 export default LanguageSelector;
-

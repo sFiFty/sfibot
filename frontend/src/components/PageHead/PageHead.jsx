@@ -1,15 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import { Radio, Button } from 'antd';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PageHeadContainer, StyledRadioGroup, AddButtonIcon, PageNameContainer } from './PageHeadStyled';
+import {
+  PageHeadContainer, StyledRadioGroup, AddButtonIcon, PageNameContainer,
+} from './PageHeadStyled';
 
 const { Button: RadioButton } = Radio;
 
-const PageHead = ({ pageName, icon, tabs = [], onTabChange, addButtonTitle, addAction }) => {
+const PageHead = ({
+  pageName, icon, tabs = [], onTabChange, addButtonTitle, addAction,
+}) => {
   const hadleTabChange = (event) => {
-    const tab = tabs.find(t => t.id === event.target.value);
+    const tab = tabs.find((t) => t.id === event.target.value);
     onTabChange(tab);
   };
 
@@ -23,7 +27,7 @@ const PageHead = ({ pageName, icon, tabs = [], onTabChange, addButtonTitle, addA
         tabs.length > 0 && (
           <StyledRadioGroup defaultValue={tabs[0].id} size="large" onChange={hadleTabChange}>
             {
-              tabs.map(tab => (
+              tabs.map((tab) => (
                 <RadioButton key={tab.id} value={tab.id}>{tab.name}</RadioButton>
               ))
             }
@@ -40,8 +44,8 @@ const PageHead = ({ pageName, icon, tabs = [], onTabChange, addButtonTitle, addA
         }
       </div>
     </PageHeadContainer>
-  )
-}
+  );
+};
 
 PageHead.propTypes = {
   pageName: PropTypes.string.isRequired,
@@ -53,15 +57,15 @@ PageHead.propTypes = {
   addButtonTitle: PropTypes.string,
   addAction: PropTypes.func,
   icon: PropTypes.shape({
-    iconName: PropTypes.string.isRequired
-  }).isRequired
-}
+    iconName: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 PageHead.defaultProps = {
   tabs: [],
   onTabChange: () => {},
   addAction: () => {},
   addButtonTitle: null,
-}
+};
 
 export default PageHead;

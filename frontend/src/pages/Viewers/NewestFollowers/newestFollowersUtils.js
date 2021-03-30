@@ -11,12 +11,12 @@ export const generateColumns = (translate, translateDates) => [
     title: translate(visitors.followDate),
     dataIndex: 'date',
     key: 'date',
-    render: (date) => getDateTime(date, translateDates, true)
-  }
+    render: (date) => getDateTime(date, translateDates, true),
+  },
 ];
 
-export const generateTableData = (followersData) => followersData.map(follower => ({
+export const generateTableData = (followersData) => followersData.map((follower) => ({
   key: follower.fromId,
   name: follower.fromName,
-  date: follower.followedAt
-}))
+  date: follower.followedAt,
+}));

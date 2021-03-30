@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Input, Alert, Space } from 'antd';
-import { FormElementContainer } from '../StyledForm';
+import FormElementContainer from '../StyledForm';
 
 const { TextArea } = Input;
 
@@ -28,17 +28,24 @@ const STextArea = ({ form, field, label }) => {
         }
       </Space>
     </FormElementContainer>
-  )
-}
+  );
+};
 
 STextArea.propTypes = {
   form: PropTypes.shape({
-    setFieldValue: PropTypes.func.isRequired
-  }),
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired
+    setFieldValue: PropTypes.func.isRequired,
+    errors: PropTypes.shape({
+      [PropTypes.string]: PropTypes.string,
+    }),
   }).isRequired,
-  label: PropTypes.string
-}
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  label: PropTypes.string,
+};
+
+STextArea.defaultProps = {
+  label: null,
+};
 
 export default STextArea;

@@ -9,6 +9,7 @@ app.use(cors());
 require('./api/commands')(app);
 require('./api/visitors')(app);
 require('./api/inputs')(app);
+require('./api/requests')(app);
 
 const port = 3001;
 

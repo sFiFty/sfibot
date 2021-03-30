@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { Layout as AntLayout, Spin } from 'antd';
 import Header from 'components/Header';
 import Login from 'pages/Login';
 import Landing from 'pages/Landing';
-import { useUser } from 'hooks/useUser';
+import useUser from 'hooks/useUser';
 import Routes from './Routes';
 
 const { Content } = AntLayout;
@@ -23,13 +23,13 @@ const Layout = () => {
 
   const renderContent = (isUserLoading, isUserError) => {
     if (isUserLoading) {
-      return <Spin />
+      return <Spin />;
     }
     if (isUserError) {
-      return <Landing />
+      return <Landing />;
     }
-    return <Routes />
-  }
+    return <Routes />;
+  };
 
   return (
     <Router>
@@ -41,8 +41,7 @@ const Layout = () => {
         </StyledContent>
       </StyledMainLayout>
     </Router>
-  )
+  );
 };
 
 export default Layout;
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation, nameSpaces, visitors as tVisitors } from "locales";
+import { useTranslation, nameSpaces, visitors as tVisitors } from 'locales';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import PageHead from 'components/PageHead';
 import { PageWrapper } from 'styles/StyledWrappers';
@@ -11,30 +11,27 @@ const TAB_IDS = {
   newestFollowers: 'newestFollowers',
   topChatters: 'topChatters',
   subscribers: 'subscribers',
-}
+};
 
 const Viewers = () => {
   const { t } = useTranslation(nameSpaces.visitors);
-  
+
   const tabs = [
     {
       name: t(tVisitors.tabNewestFollowers),
-      id: TAB_IDS.newestFollowers
+      id: TAB_IDS.newestFollowers,
     },
     {
       name: t(tVisitors.tabTopChatters),
-      id: TAB_IDS.topChatters
+      id: TAB_IDS.topChatters,
     },
     {
       name: t(tVisitors.tabNewestSubscribers),
-      id: TAB_IDS.subscribers
+      id: TAB_IDS.subscribers,
     },
-  ]
-  
-  const [activeTab, setActiveTab] = useState(tabs[0]);
-  const onAddAction = () => {
+  ];
 
-  }
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
     <PageWrapper>
@@ -62,7 +59,7 @@ const Viewers = () => {
         }
       </div>
     </PageWrapper>
-  )
-}
+  );
+};
 
 export default Viewers;

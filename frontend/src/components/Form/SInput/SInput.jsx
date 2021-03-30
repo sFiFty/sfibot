@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Alert, Space } from 'antd';
-import { FormElementContainer } from '../StyledForm';
+import FormElementContainer from '../StyledForm';
 
 const SInput = ({ form, field, label }) => {
   const onChange = (event) => form.setFieldValue(field.name, event.target.value);
@@ -21,17 +21,24 @@ const SInput = ({ form, field, label }) => {
         }
       </Space>
     </FormElementContainer>
-  )
-}
+  );
+};
 
 SInput.propTypes = {
   form: PropTypes.shape({
-    setFieldValue: PropTypes.func.isRequired
-  }),
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired
+    setFieldValue: PropTypes.func.isRequired,
+    errors: PropTypes.shape({
+      [PropTypes.string]: PropTypes.string,
+    }),
   }).isRequired,
-  label: PropTypes.string
-}
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  label: PropTypes.string,
+};
+
+SInput.defaultProps = {
+  label: null,
+};
 
 export default SInput;

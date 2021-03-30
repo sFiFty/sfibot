@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link, withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
-import { useTranslation, nameSpaces } from "locales";
+import { useTranslation, nameSpaces } from 'locales';
 import generateNavigationData from './navigationUtils';
 
 const StyledMenu = styled(Menu)`
@@ -32,7 +33,7 @@ const Navigation = ({ location }) => {
       mode="horizontal"
     >
       {
-        navigationData.map(navigationItem => (
+        navigationData.map((navigationItem) => (
           <Menu.Item key={navigationItem.route}>
             <Link to={navigationItem.route}>
               {navigationItem.name}
@@ -41,8 +42,13 @@ const Navigation = ({ location }) => {
         ))
       }
     </StyledMenu>
-  )
+  );
+};
+
+Navigation.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(Navigation);
-

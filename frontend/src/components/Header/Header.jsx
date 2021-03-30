@@ -1,6 +1,6 @@
 import React from 'react';
 import { Space } from 'antd';
-import { useTranslation, nameSpaces, common as tCommon } from "locales";
+import { useTranslation, nameSpaces, common as tCommon } from 'locales';
 import Navigation from 'components/Navigation';
 import LanguageSelector from 'components/LanguageSelector';
 import UserBox from 'components/UserBox';
@@ -22,8 +22,7 @@ const Header = () => {
         </Space>
       </HeaderContainer>
     </StyledHeader>
-  )
+  );
 };
 
 export default Header;
-
