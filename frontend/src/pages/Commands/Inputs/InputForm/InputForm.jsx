@@ -46,6 +46,7 @@ const InputForm = ({
         (form) => (
           <>
             <Field
+              addonBefore="!"
               component={SInput}
               name="commandName"
               placeholder={t(tInputs.formName)}

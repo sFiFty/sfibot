@@ -11,7 +11,7 @@ const translation = {
   [commands.formUpdate]: 'Update command',
   [commands.drawerUpdateTitle]: 'Update command',
   [commands.drawerCreateTitle]: 'Create new command',
-  [commands.addRegularButton]: 'Create regular command',
+  [commands.addCustomButton]: 'Create custom command',
   [commands.addTimerButton]: 'Create timer',
   [commands.addInputButton]: 'Create input',
   [commands.formNameValidationRequiredError]: 'Command name is required field',
@@ -21,7 +21,7 @@ const translation = {
   [commands.formResponseValidationMaxLengthError]: 'Response should contain less then 100 characters',
   [commands.formResponseValidationMinLengthError]: 'Response should contain more then 2 characters',
   [commands.pageHead]: 'Commands',
-  [commands.regularCommands]: 'Regular',
+  [commands.customCommands]: 'Custom',
   [commands.timers]: 'Timers',
   [commands.inputs]: 'Inputs',
 };

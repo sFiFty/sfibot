@@ -7,7 +7,7 @@ import RegularCommands from './RegularCommands';
 import Inputs from './Inputs';
 
 const TAB_IDS = {
-  regularCommands: 'regularCommands',
+  customCommands: 'customCommands',
   timers: 'timers',
   inputs: 'inputs',
 };
@@ -22,8 +22,8 @@ const Commands = () => {
 
   const tabs = [
     {
-      name: t(tCommands.regularCommands),
-      id: TAB_IDS.regularCommands,
+      name: t(tCommands.customCommands),
+      id: TAB_IDS.customCommands,
     },
     {
       name: t(tCommands.timers),
@@ -38,8 +38,8 @@ const Commands = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const getAddButtonTitle = useCallback(() => {
-    if (activeTab.id === TAB_IDS.regularCommands) {
-      return t(tCommands.addRegularButton);
+    if (activeTab.id === TAB_IDS.customCommands) {
+      return t(tCommands.addCustomButton);
     }
     if (activeTab.id === TAB_IDS.timers) {
       return t(tCommands.addTimerButton);
@@ -58,7 +58,7 @@ const Commands = () => {
         addButtonTitle={getAddButtonTitle()}
       />
       {
-        activeTab.id === TAB_IDS.regularCommands && (
+        activeTab.id === TAB_IDS.customCommands && (
           <RegularCommands
             isDrawerOpen={isDrawerOpen}
             setIsDrawerOpen={setIsDrawerOpen}

@@ -23,7 +23,7 @@ export const commands = {
   formUpdate: 'formUpdate',
   drawerUpdateTitle: 'drawerUpdateTitle',
   drawerCreateTitle: 'drawerCreateTitle',
-  addRegularButton: 'addRegularButton',
+  addCustomButton: 'addCustomButton',
   addTimerButton: 'addTimerButton',
   addInputButton: 'addInputButton',
   formNameValidationRequiredError: 'formNameValidationRequiredError',
@@ -33,7 +33,7 @@ export const commands = {
   formResponseValidationMaxLengthError: 'formResponseValidationMaxLengthError',
   formResponseValidationMinLengthError: 'formResponseValidationMinLengthError',
   pageHead: 'pageHead',
-  regularCommands: 'regularCommands',
+  customCommands: 'customCommands',
   timers: 'timers',
   inputs: 'inputs',
 };
@@ -66,6 +66,11 @@ export const common = {
   requests: 'requests',
   slogan: 'slogan',
   footerMadeBy: 'footerMadeBy',
+  broadcaster: 'broadcaster',
+  subscriber: 'subscriber',
+  vip: 'vip',
+  moderator: 'moderator',
+  everyone: 'everyone',
 };
 
 export const visitors = {

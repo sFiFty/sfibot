@@ -11,7 +11,7 @@ const translation = {
   [commands.formUpdate]: 'Обновить команду',
   [commands.drawerUpdateTitle]: 'Обновить команду',
   [commands.drawerCreateTitle]: 'Добавить новую команду',
-  [commands.addRegularButton]: 'Добавить простую команду',
+  [commands.addCustomButton]: 'Добавить настраиваемою команду',
   [commands.addTimerButton]: 'Добавить команду повторения',
   [commands.addInputButton]: 'Добавить команду ввода',
   [commands.formNameValidationRequiredError]: 'Название команды является обязательным полем',
@@ -21,7 +21,7 @@ const translation = {
   [commands.formResponseValidationMaxLengthError]: 'Поле ответ должно содержать менее 100та символов',
   [commands.formResponseValidationMinLengthError]: 'Поле ответ должно содержать больше 2х символов',
   [commands.pageHead]: 'Команды',
-  [commands.regularCommands]: 'Обычные',
+  [commands.customCommands]: 'Настраиваемые',
   [commands.timers]: 'Повторяющиеся',
   [commands.inputs]: 'Команды ввода',
 };

@@ -8,6 +8,11 @@ const translation = {
   [common.slogan]: 'Made on Twitch and for Twitch',
   [common.footerMadeBy]: 'Made by sfiftyk and his twitch followers',
   [common.dashboard]: 'Dashboard',
+  [common.broadcaster]: 'Broadcaster',
+  [common.subscriber]: 'Subscriber',
+  [common.moderator]: 'Moderator',
+  [common.vip]: 'VIP',
+  [common.everyone]: 'Everyone',
 };
 
 export default translation;

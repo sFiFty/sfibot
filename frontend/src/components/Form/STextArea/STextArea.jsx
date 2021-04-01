@@ -10,7 +10,9 @@ const StyledTextArea = styled(TextArea)`
   resize: none;
 `;
 
-const STextArea = ({ form, field, label }) => {
+const STextArea = ({
+  form, field, label, ...rest
+}) => {
   const onChange = (event) => form.setFieldValue(field.name, event.target.value);
   return (
     <FormElementContainer>
@@ -20,7 +22,7 @@ const STextArea = ({ form, field, label }) => {
         )
       }
       <Space direction="vertical">
-        <StyledTextArea {...field} onChange={onChange} id={label && field.name} />
+        <StyledTextArea {...field} {...rest} onChange={onChange} id={label && field.name} />
         {
           form.errors[field.name] && (
             <Alert message={form.errors[field.name]} type="error" />

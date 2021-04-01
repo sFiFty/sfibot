@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Alert, Space } from 'antd';
+import { Select, Alert, Space } from 'antd';
 import FormElementContainer from '../StyledForm';
 
-const SInput = ({
-  form, field, label, ...rest
+const { Option } = Select;
+
+const SSelect = ({
+  form, field, label, options, ...rest
 }) => {
   const onChange = (event) => form.setFieldValue(field.name, event.target.value);
   return (
@@ -15,7 +17,13 @@ const SInput = ({
         )
       }
       <Space direction="vertical">
-        <Input {...field} {...rest} onChange={onChange} id={label && field.name} />
+        <Select {...field} {...rest} onChange={onChange} id={label && field.name}>
+          {
+            options.map((option) => (
+              <Option value={option.value}>{option.name}</Option>
+            ))
+          }
+        </Select>
         {
           form.errors[field.name] && (
             <Alert message={form.errors[field.name]} type="error" />
@@ -26,7 +34,7 @@ const SInput = ({
   );
 };
 
-SInput.propTypes = {
+SSelect.propTypes = {
   form: PropTypes.shape({
     setFieldValue: PropTypes.func.isRequired,
     errors: PropTypes.shape({
@@ -36,11 +44,15 @@ SInput.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  })).isRequired,
   label: PropTypes.string,
 };
 
-SInput.defaultProps = {
+SSelect.defaultProps = {
   label: null,
 };
 
-export default SInput;
+export default SSelect;

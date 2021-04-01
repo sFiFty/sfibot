@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { useTranslation, nameSpaces, commands as tCommands } from 'locales';
 import * as Yup from 'yup';
 import { Field } from 'formik';
-import Form, { SInput, STextArea } from 'components/Form';
+import Form, { SInput, STextArea, SSelect } from 'components/Form';
 
 const AddCommandForm = ({
   command = null, onAddCommand, onUpdateCommand, isUpdate,
@@ -48,6 +48,12 @@ const AddCommandForm = ({
           <>
             <Field
               component={SInput}
+              name="name"
+              placeholder={t(tCommands.formName)}
+              label={t(tCommands.formName)}
+            />
+            <Field
+              component={SSelect}
               name="name"
               placeholder={t(tCommands.formName)}
               label={t(tCommands.formName)}
