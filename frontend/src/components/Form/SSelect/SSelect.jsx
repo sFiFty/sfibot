@@ -8,7 +8,7 @@ const { Option } = Select;
 const SSelect = ({
   form, field, label, options, ...rest
 }) => {
-  const onChange = (event) => form.setFieldValue(field.name, event.target.value);
+  const onChange = (value) => form.setFieldValue(field.name, value);
   return (
     <FormElementContainer>
       {

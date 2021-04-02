@@ -66,11 +66,17 @@ export const common = {
   requests: 'requests',
   slogan: 'slogan',
   footerMadeBy: 'footerMadeBy',
+  userRole: 'userRole',
   broadcaster: 'broadcaster',
   subscriber: 'subscriber',
   vip: 'vip',
   moderator: 'moderator',
   everyone: 'everyone',
+  advancedSettings: 'advancedSettings',
+  userCooldown: 'userCooldown',
+  globalCooldown: 'globalCooldowne',
+  aliases: 'aliases',
+  clickToAddNewAlias: 'clickToAddNewAlias',
 };
 
 export const visitors = {
@@ -88,6 +94,7 @@ export const date = {
   yesterday: 'yesterday',
   tomorrow: 'tomorrow',
   at: 'at',
+  seconds: 'seconds',
 };
 
 export const requests = {

@@ -9,6 +9,10 @@ export const FormElementContainer = styled.div`
   flex-direction: column;
 `;
 
+const FormContainer = styled(Space)`
+  width: 100%;
+`;
+
 const SForm = ({
   children, onSubmit, ...rest
 }) => {
@@ -33,9 +37,9 @@ const SForm = ({
       {
         (form) => (
           <Form>
-            <Space direction="vertical" size="middle">
+            <FormContainer direction="vertical" size="middle">
               {children(form)}
-            </Space>
+            </FormContainer>
           </Form>
         )
       }

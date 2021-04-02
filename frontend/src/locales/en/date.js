@@ -5,6 +5,7 @@ const translation = {
   [date.tomorrow]: 'Tomorrow',
   [date.yesterday]: 'Yesterday',
   [date.at]: 'at',
+  [date.seconds]: 'Seconds',
 };
 
 export default translation;
